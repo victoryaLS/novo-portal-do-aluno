@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Portal do Aluno</title>
+</head>
+
+<body>
+    <header class="header">
+
+        <img src="assets/unicampus.png" class="logo" width="380">
+
+        <!-- cards -->
+        <div class="cards-topo">
+            <div class="card-topo" onclick="abrirLogin()">
+                <span>Perfil</span>
+            </div>
+
+            <div class="card-topo" onclick="irParaCursos()">
+                <span>Cursos</span>
+            </div>
+
+            <div class="card-topo" onclick="abrirCarrinho()">
+                <span>Carrinho (<span id="contadorCarrinho">0</span>)</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- banner Análise de Sistemas -->
+    <div class="banner-card">
+        <div class="banner-content">
+            <h1>ANÁLISE DE SISTEMAS</h1>
+            <p>Formando profissionais capacitados para criar, desenvolver e inovar soluções tecnológicas.</p>
+        </div>
+    </div>
+
+    <!-- cursos -->
+    <section id="cursos">
+
+        <div class="card-cursos">
+            <span class="cursos-tag">ANÁLISE E DESENVOLVIMENTO</span>
+            <h2>Estruturas de Dados</h2>
+            <p>Aprenda como organizar dados de forma eficiente.</p>
+            <button onclick="adicionarCarrinho('Estruturas de Dados', this)">Adicionar</button>
+        </div>
+
+        <div class="card-cursos">
+            <span class="cursos-tag">ANÁLISE E DESENVOLVIMENTO</span>
+            <h2>Modelagem de Sistemas</h2>
+            <p>Planejamento e organização antes da programação.</p>
+            <button onclick="adicionarCarrinho('Modelagem de Sistemas', this)">Adicionar</button>
+        </div>
+
+        <div class="card-cursos">
+            <span class="cursos-tag">ANÁLISE E DESENVOLVIMENTO</span>
+            <h2>Paradigmas de Programação</h2>
+            <p>Diferentes formas de desenvolver software.</p>
+            <button onclick="adicionarCarrinho('Paradigmas de Programação', this)">Adicionar</button>
+        </div>
+
+        <div class="card-cursos">
+            <span class="cursos-tag">ANÁLISE E DESENVOLVIMENTO</span>
+            <h2>Banco de Dados</h2>
+            <p>Armazenamento e manipulação de dados.</p>
+            <button onclick="adicionarCarrinho('Banco de Dados', this)">Adicionar</button>
+        </div>
+
+    </section>
+
+    <!-- login do card perfil -->
+    <div id="loginCard" class="login-card">
+        <div class="login-conteudo">
+            <span class="fechar" onclick="fecharLogin()">✖</span>
+            <h2>Login do Aluno</h2>
+            <input type="text" placeholder="ID do Aluno" id="alunoId">
+            <input type="password" placeholder="Senha" id="alunoSenha">
+            <button onclick="fazerLogin()">Entrar</button>
+        </div>
+    </div>
+
+    <!-- overlay -->
+    <div id="overlayCarrinho" class="overlay" onclick="fecharCarrinho()"></div>
+
+    <!-- carrinho de cursos -->
+    <div id="carrinhoLateral" class="carrinho-lateral">
+        <div class="carrinho-header">
+            <h2>Cursos</h2>
+            <span onclick="fecharCarrinho()" class="fechar">✖</span>
+        </div>
+
+        <div id="listaCarrinho" class="carrinho-conteudo"></div>
+
+        <div class="carrinho-footer">
+            <p id="totalCarrinho">Total: R$ 0</p>
+            <button onclick="finalizarCompra()">Finalizar Matrícula</button>
+        </div>
+    </div>
+
+    <!-- alerta quando adicionar um curso no carrinho -->
+    <div id="alertaSucesso" class="alerta-sucesso">
+        Curso adicionado com sucesso!
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
