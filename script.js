@@ -1,24 +1,33 @@
-// controle do carrinho
 let carrinho = [];
-const precoPadrao = 199;
+const PRECO_PADRAO = 199;
 
-// adicionar curso no carrinho
-function adicionarCarrinho(nomeCurso, botao) {
+function adicionarDoModal(nomeCurso, botao, idModal) {
+    if (!carrinho.find(item => item.nome === nomeCurso)) {
+        carrinho.push({ nome: nomeCurso, preco: PRECO_PADRAO });
+        atualizarCarrinho();
+        mostrarAlerta();
+    }
 
-    // evitar duplicação
-    if (carrinho.find(item => item.nome === nomeCurso)) return;
-
-    carrinho.push({ nome: nomeCurso, preco: precoPadrao });
-    atualizarCarrinho();
-    mostrarAlerta();
-
-    // atualizar o botão
-    botao.innerText = "Adicionado ✓";
+    botao.innerText = 'Adicionado ✓';
     botao.disabled = true;
-    botao.classList.add("adicionado");
+    botao.classList.add('adicionado');
+
+    fecharModal(idModal);
 }
 
-// remover item do carrinho
+function adicionarCarrinho(nomeCurso, botao) {
+    if (carrinho.find(item => item.nome === nomeCurso)) return;
+
+    carrinho.push({ nome: nomeCurso, preco: PRECO_PADRAO });
+
+    botao.innerText = 'Adicionado ✓';
+    botao.disabled = true;
+    botao.classList.add('adicionado');
+
+    atualizarCarrinho();
+    mostrarAlerta();
+}
+
 function removerItem(index) {
     const nomeCurso = carrinho[index].nome;
     carrinho.splice(index, 1);
@@ -27,19 +36,16 @@ function removerItem(index) {
     restaurarBotao(nomeCurso);
 }
 
-// atualizar o carrinho 
 function atualizarCarrinho() {
+    const lista = document.getElementById('listaCarrinho');
+    const totalTexto = document.getElementById('totalCarrinho');
+    const contador = document.getElementById('contadorCarrinho');
 
-    const lista = document.getElementById("listaCarrinho");
-    const totalTexto = document.getElementById("totalCarrinho");
-    const contador = document.getElementById("contadorCarrinho");
-
-    lista.innerHTML = "";
+    lista.innerHTML = '';
     let total = 0;
 
     carrinho.forEach((item, index) => {
         total += item.preco;
-
         lista.innerHTML += `
             <div class="item-carrinho">
                 <span>${item.nome}</span>
@@ -49,96 +55,97 @@ function atualizarCarrinho() {
         `;
     });
 
-    totalTexto.innerText = "Total: R$ " + total;
+    totalTexto.innerText = `Total: R$ ${total}`;
     contador.innerText = carrinho.length;
 }
 
-// restaurar o botão quando remover curso do carrinho
 function restaurarBotao(nomeCurso) {
-    const botoes = document.querySelectorAll(".card-cursos button");
-
-    botoes.forEach(botao => {
-        if (botao.parentElement.querySelector("h2").innerText === nomeCurso) {
-            botao.innerText = "Adicionar";
+    document.querySelectorAll('.card-cursos button').forEach(botao => {
+        const titulo = botao.parentElement.querySelector('h2');
+        if (titulo && titulo.innerText === nomeCurso) {
+            botao.innerText = 'Adicionar';
             botao.disabled = false;
-            botao.classList.remove("adicionado");
+            botao.classList.remove('adicionado');
+        }
+    });
+
+    document.querySelectorAll('.modal-box').forEach(modal => {
+        const titulo = modal.querySelector('h2');
+        if (titulo && titulo.innerText === nomeCurso) {
+            const botaoModal = modal.querySelector('.btn-adicionar');
+            if (botaoModal) {
+                botaoModal.innerText = 'Adicionar';
+                botaoModal.disabled = false;
+                botaoModal.classList.remove('adicionado');
+            }
         }
     });
 }
 
-// finalizar a compra
 function finalizarCompra() {
     if (carrinho.length === 0) {
-        alert("Seu carrinho está vazio!");
+        alert('Seu carrinho está vazio!');
         return;
     }
 
-    alert("Matrícula realizada com sucesso! 🎓");
+    alert('Matrícula realizada com sucesso! 🎓');
 
     carrinho = [];
     atualizarCarrinho();
 
-    // restaurar todos os botões
-    document.querySelectorAll(".card-cursos button").forEach(botao => {
-        botao.innerText = "Adicionar";
+    document.querySelectorAll('.card-cursos button').forEach(botao => {
+        botao.innerText = 'Adicionar';
         botao.disabled = false;
-        botao.classList.remove("adicionado");
+        botao.classList.remove('adicionado');
     });
 
     fecharCarrinho();
 }
 
-// elementos visuais
-
-function abrirCarrinho() {
-    document.getElementById("carrinhoLateral").classList.add("ativo");
-    document.getElementById("overlayCarrinho").classList.add("ativo");
-}
-
-function fecharCarrinho() {
-    document.getElementById("carrinhoLateral").classList.remove("ativo");
-    document.getElementById("overlayCarrinho").classList.remove("ativo");
-}
-
 function abrirLogin() {
-    document.getElementById("loginCard").style.display = "flex";
+    document.getElementById('loginCard').style.display = 'flex';
 }
 
 function fecharLogin() {
-    document.getElementById("loginCard").style.display = "none";
+    document.getElementById('loginCard').style.display = 'none';
 }
 
 function fazerLogin() {
-    const id = document.getElementById("alunoId").value;
-    const senha = document.getElementById("alunoSenha").value;
+    const id = document.getElementById('alunoId').value.trim();
+    const senha = document.getElementById('alunoSenha').value.trim();
 
     if (id && senha) {
-        alert("Login realizado com sucesso!");
+        alert('Login realizado com sucesso!');
         fecharLogin();
     } else {
-        alert("Preencha todos os campos!");
+        alert('Preencha todos os campos!');
     }
 }
 
-function irParaCursos() {
-    document.getElementById("cursos").scrollIntoView({ behavior: "smooth" });
-}
-
-// alerta 
-function mostrarAlerta() {
-    const alerta = document.getElementById("alertaSucesso");
-    alerta.classList.add("ativo");
-
-    setTimeout(() => {
-        alerta.classList.remove("ativo");
-    }, 2000);
-}
-
-function abrirCurso(id) {
-    document.getElementById("overlay-" + id).style.display = "flex"
+function abrirModal(id) {
+    document.getElementById('overlay-' + id).style.display = 'flex';
 }
 
 function fecharModal(id) {
-    document.getElementById("overlay-" + id).style.display = "none"
+    document.getElementById('overlay-' + id).style.display = 'none';
 }
 
+function abrirCarrinho() {
+    document.getElementById('carrinhoLateral').classList.add('ativo');
+    document.getElementById('overlayCarrinho').classList.add('ativo');
+}
+
+function fecharCarrinho() {
+    document.getElementById('carrinhoLateral').classList.remove('ativo');
+    document.getElementById('overlayCarrinho').classList.remove('ativo');
+}
+
+function irParaCursos() {
+    document.getElementById('cursos').scrollIntoView({ behavior: 'smooth' });
+}
+
+function mostrarAlerta() {
+    const alerta = document.getElementById('alertaSucesso');
+    alerta.classList.add('ativo');
+    setTimeout(() => alerta.classList.remove('ativo'), 2000);
+}

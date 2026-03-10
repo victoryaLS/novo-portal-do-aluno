@@ -9,27 +9,23 @@
 </head>
 
 <body>
+
     <header class="header">
+        <img src="assets/unicampus.png" class="logo" width="380" alt="Logo UniCampus">
 
-        <img src="assets/unicampus.png" class="logo" width="380">
-
-        <!-- cards -->
-        <div class="cards-topo">
+        <nav class="cards-topo">
             <div class="card-topo" onclick="abrirLogin()">
                 <span>Perfil</span>
             </div>
-
             <div class="card-topo" onclick="irParaCursos()">
                 <span>Cursos</span>
             </div>
-
             <div class="card-topo" onclick="abrirCarrinho()">
                 <span>Carrinho (<span id="contadorCarrinho">0</span>)</span>
             </div>
-        </div>
+        </nav>
     </header>
 
-    <!-- banner Análise de Sistemas -->
     <div class="banner-card">
         <div class="banner-content">
             <h1>ANÁLISE DE SISTEMAS</h1>
@@ -37,42 +33,43 @@
         </div>
     </div>
 
-    <!-- cursos -->
     <section id="cursos">
 
-        <div class="card-cursos" >
+        <div class="card-cursos" onclick="abrirModal('estruturas')">
             <span class="cursos-tag">ANÁLISE E DESENVOLVIMENTO DE SISTEMAS</span>
             <h2>Estruturas de Dados</h2>
             <p>Aprenda como organizar dados de forma eficiente.</p>
-            <button onclick="adicionarCarrinho('Estruturas de Dados', this)">Adicionar</button>
+            <button onclick="event.stopPropagation(); adicionarCarrinho('Estruturas de Dados', this)">Adicionar</button>
         </div>
 
-        <div class="card-cursos">
+        <div class="card-cursos" onclick="abrirModal('modelagem')">
             <span class="cursos-tag">ANÁLISE E DESENVOLVIMENTO DE SISTEMAS</span>
             <h2>Modelagem de Sistemas</h2>
             <p>Planejamento e organização antes da programação.</p>
-            <button onclick="adicionarCarrinho('Modelagem de Sistemas', this)">Adicionar</button>
+            <button onclick="event.stopPropagation(); adicionarCarrinho('Modelagem de Sistemas', this)">Adicionar</button>
         </div>
 
-        <div class="card-cursos">
-            <span class="cursos-tag">ANÁLISE E DESENVOLVIMENTO DE SISTEMAS/span>
+        <div class="card-cursos" onclick="abrirModal('paradigmas')">
+            <span class="cursos-tag">ANÁLISE E DESENVOLVIMENTO DE SISTEMAS</span>
             <h2>Paradigmas de Programação</h2>
             <p>Diferentes formas de desenvolver software.</p>
-            <button onclick="adicionarCarrinho('Paradigmas de Programação', this)">Adicionar</button>
+            <button onclick="event.stopPropagation(); adicionarCarrinho('Paradigmas de Programação', this)">Adicionar</button>
         </div>
 
-        <div class="card-cursos">
+        <div class="card-cursos" onclick="abrirModal('banco')">
             <span class="cursos-tag">ANÁLISE E DESENVOLVIMENTO DE SISTEMAS</span>
             <h2>Banco de Dados</h2>
             <p>Armazenamento e manipulação de dados.</p>
-            <button onclick="adicionarCarrinho('Banco de Dados', this)">Adicionar</button>
+            <button onclick="event.stopPropagation(); adicionarCarrinho('Banco de Dados', this)">Adicionar</button>
         </div>
 
-            <!-- Modal: Estruturas de Dados -->
+    </section>
+
+    <!-- modal estruturas de dados -->
     <div id="overlay-estruturas" class="modal-overlay" onclick="fecharModal('estruturas')">
         <div class="modal-box" onclick="event.stopPropagation()">
-            <button class="modal-fechar" onclick="fecharModal('estruturas')">X</button>
-            <span class="curso-tag">ANÁLISE E DESENVOLVIMENTO DE SISTEMAS</span>
+            <button class="modal-fechar" onclick="fecharModal('estruturas')">✕</button>
+            <span class="cursos-tag">ANÁLISE E DESENVOLVIMENTO DE SISTEMAS</span>
             <h2>Estruturas de Dados</h2>
             <p>Aprenda como organizar e manipular dados de forma eficiente em memória usando listas, filas, pilhas, árvores e grafos.</p>
             <hr>
@@ -88,15 +85,15 @@
                 <li>Tabelas hash</li>
                 <li>Grafos e algoritmos de busca</li>
             </ul>
-            <button class="btn-matricular" onclick="alert('Matrícula realizada!')">Matricular-se</button>
+            <button class="btn-adicionar" onclick="adicionarDoModal('Estruturas de Dados', this, 'estruturas')">Adicionar</button>
         </div>
     </div>
 
-    <!-- Modal: Modelagem de Sistemas -->
+    <!-- modal modelagem de sistemas -->
     <div id="overlay-modelagem" class="modal-overlay" onclick="fecharModal('modelagem')">
         <div class="modal-box" onclick="event.stopPropagation()">
-            <button class="modal-fechar" onclick="fecharModal('modelagem')">X</button>
-            <span class="curso-tag">ANÁLISE E DESENVOLVIMENTO DE SISTEMAS</span>
+            <button class="modal-fechar" onclick="fecharModal('modelagem')">✕</button>
+            <span class="cursos-tag">ANÁLISE E DESENVOLVIMENTO DE SISTEMAS</span>
             <h2>Modelagem de Sistemas</h2>
             <p>Entenda como planejar e documentar sistemas de software antes de programar, usando UML e diagramas.</p>
             <hr>
@@ -112,15 +109,15 @@
                 <li>Diagrama de Sequência</li>
                 <li>Modelagem de banco de dados (MER)</li>
             </ul>
-            <button class="btn-matricular" onclick="alert('Matrícula realizada!')">Matricular-se</button>
+            <button class="btn-adicionar" onclick="adicionarDoModal('Modelagem de Sistemas', this, 'modelagem')">Adicionar</button>
         </div>
     </div>
 
-    <!-- Modal: Paradigmas de Programação -->
+    <!-- modal paradigmas de programação -->
     <div id="overlay-paradigmas" class="modal-overlay" onclick="fecharModal('paradigmas')">
         <div class="modal-box" onclick="event.stopPropagation()">
-            <button class="modal-fechar" onclick="fecharModal('paradigmas')">X</button>
-            <span class="curso-tag">ANÁLISE E DESENVOLVIMENTO DE SISTEMAS</span>
+            <button class="modal-fechar" onclick="fecharModal('paradigmas')">✕</button>
+            <span class="cursos-tag">ANÁLISE E DESENVOLVIMENTO DE SISTEMAS</span>
             <h2>Paradigmas de Programação</h2>
             <p>Explore diferentes formas de pensar e desenvolver software, do imperativo ao funcional e orientado a objetos.</p>
             <hr>
@@ -136,15 +133,15 @@
                 <li>Programação Reativa</li>
                 <li>Comparativo entre linguagens</li>
             </ul>
-            <button class="btn-matricular" onclick="alert('Matrícula realizada!')">Matricular-se</button>
+            <button class="btn-adicionar" onclick="adicionarDoModal('Paradigmas de Programação', this, 'paradigmas')">Adicionar</button>
         </div>
     </div>
 
-    <!-- Modal: Banco de Dados -->
+    <!-- modal banco de dados -->
     <div id="overlay-banco" class="modal-overlay" onclick="fecharModal('banco')">
         <div class="modal-box" onclick="event.stopPropagation()">
-            <button class="modal-fechar" onclick="fecharModal('banco')">X</button>
-            <span class="curso-tag">ANÁLISE E DESENVOLVIMENTO DE SISTEMAS</span>
+            <button class="modal-fechar" onclick="fecharModal('banco')">✕</button>
+            <span class="cursos-tag">ANÁLISE E DESENVOLVIMENTO DE SISTEMAS</span>
             <h2>Banco de Dados</h2>
             <p>Domine tecnologias e linguagens de armazenamento de dados, do SQL básico ao NoSQL avançado.</p>
             <hr>
@@ -160,13 +157,11 @@
                 <li>Stored Procedures e Triggers</li>
                 <li>Introdução ao NoSQL</li>
             </ul>
-            <button class="btn-matricular" onclick="alert('Matrícula realizada!')">Matricular-se</button>
+            <button class="btn-adicionar" onclick="adicionarDoModal('Banco de Dados', this, 'banco')">Adicionar</button>
         </div>
     </div>
 
-    </section>
-
-    <!-- login do card perfil -->
+    <!-- login -->
     <div id="loginCard" class="login-card">
         <div class="login-conteudo">
             <span class="fechar" onclick="fecharLogin()">✖</span>
@@ -177,25 +172,21 @@
         </div>
     </div>
 
-    <!-- overlay -->
+    <!-- carrinho -->
     <div id="overlayCarrinho" class="overlay" onclick="fecharCarrinho()"></div>
 
-    <!-- carrinho de cursos -->
     <div id="carrinhoLateral" class="carrinho-lateral">
         <div class="carrinho-header">
             <h2>Cursos</h2>
-            <span onclick="fecharCarrinho()" class="fechar">✖</span>
+            <span class="fechar" onclick="fecharCarrinho()">✖</span>
         </div>
-
         <div id="listaCarrinho" class="carrinho-conteudo"></div>
-
         <div class="carrinho-footer">
             <p id="totalCarrinho">Total: R$ 0</p>
             <button onclick="finalizarCompra()">Finalizar Matrícula</button>
         </div>
     </div>
 
-    <!-- alerta quando adicionar um curso no carrinho -->
     <div id="alertaSucesso" class="alerta-sucesso">
         Curso adicionado com sucesso!
     </div>
