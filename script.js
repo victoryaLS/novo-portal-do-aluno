@@ -133,3 +133,12 @@ function mostrarAlerta() {
         alerta.classList.remove("ativo");
     }, 2000);
 }
+
+function abrirCurso(id) {
+    document.getElementById("overlay-" + id).style.display = "flex"
+}
+
+function fecharModal(id) {
+    document.getElementById("overlay-" + id).style.display = "none"
+}
+

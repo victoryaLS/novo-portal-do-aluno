@@ -284,3 +284,308 @@ button.adicionado {
     box-shadow: 0 6px 15px rgba(16, 7, 63, 0.3);
     cursor: default;
 }
+
+/* ===== MODAL DE CURSOS ===== */
+
+#modal-overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(4px);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+#modal-overlay.ativo {
+    opacity: 1;
+}
+
+#modal-overlay.ativo .modal-box {
+    transform: translateY(0) scale(1);
+}
+
+.modal-box {
+    background: #fff;
+    border-radius: 20px;
+    padding: 36px;
+    width: 90%;
+    max-width: 580px;
+    max-height: 88vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.25);
+    transform: translateY(30px) scale(0.97);
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+    scrollbar-width: thin;
+}
+
+.modal-fechar {
+    position: absolute;
+    top: 16px; right: 16px;
+    background: #f0f0f0;
+    border: none;
+    width: 34px; height: 34px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 15px;
+    color: #555;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.2s, color 0.2s;
+}
+
+.modal-fechar:hover {
+    background: #26658c;
+    color: #fff;
+}
+
+.modal-tag {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: #26658c;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.modal-titulo {
+    font-size: 1.7rem;
+    color: #093475;
+    margin: 0 0 12px 0;
+    line-height: 1.2;
+}
+
+.modal-descricao {
+    font-size: 0.95rem;
+    color: #555;
+    line-height: 1.6;
+    margin: 0 0 24px 0;
+}
+
+/* Stats */
+.modal-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.stat-item {
+    background: #f4f7fb;
+    border-radius: 12px;
+    padding: 14px 8px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.stat-icon {
+    font-size: 1.3rem;
+}
+
+.stat-valor {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #093475;
+}
+
+.stat-label {
+    font-size: 0.72rem;
+    color: #888;
+}
+
+/* Professor */
+.modal-professor {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: linear-gradient(135deg, #f0f5ff, #e8f0fe);
+    border-radius: 12px;
+    padding: 14px 18px;
+    margin-bottom: 24px;
+    border-left: 4px solid #26658c;
+}
+
+.prof-avatar {
+    width: 44px; height: 44px;
+    background: #26658c;
+    color: white;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.prof-label {
+    font-size: 0.72rem;
+    color: #888;
+    display: block;
+}
+
+.prof-nome {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #093475;
+    display: block;
+}
+
+/* Seções */
+.modal-secao {
+    margin-bottom: 22px;
+}
+
+.secao-titulo {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #333;
+    margin: 0 0 12px 0;
+}
+
+.modal-ementa {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.modal-ementa-item {
+    background: #f9f9f9;
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 0.88rem;
+    color: #444;
+    border-left: 3px solid #26658c;
+}
+
+.ementa-check {
+    color: #26658c;
+    font-weight: 700;
+    margin-right: 6px;
+}
+
+.req-lista {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.req-badge {
+    background: #eef4fb;
+    color: #26658c;
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 20px;
+    border: 1px solid #c5d9ee;
+}
+
+/* Botão matricular */
+.modal-btn-matricular {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(135deg, #26658c, #093475);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 6px;
+    transition: opacity 0.2s, transform 0.2s;
+    letter-spacing: 0.04em;
+}
+
+.modal-btn-matricular:hover {
+    opacity: 0.92;
+    transform: translateY(-2px);
+}
+
+
+/* Modal */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-box {
+    background: white;
+    border-radius: 15px;
+    padding: 30px;
+    width: 90%;
+    max-width: 500px;
+    max-height: 80vh;
+    overflow-y: auto;
+    position: relative;
+}
+
+.modal-box h2 {
+    color: #093475;
+    margin-top: 8px;
+}
+
+.modal-box p {
+    color: #555;
+}
+
+.modal-box ul {
+    color: #555;
+    padding-left: 20px;
+}
+
+.modal-box ul li {
+    margin-bottom: 5px;
+}
+
+.modal-box hr {
+    border: none;
+    border-top: 1px solid #ddd;
+    margin: 15px 0;
+}
+
+.modal-fechar {
+    position: absolute;
+    top: 15px; right: 15px;
+    background: none;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 4px 10px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #555;
+}
+
+.modal-fechar:hover {
+    background: #eee;
+}
+
+.btn-matricular {
+    margin-top: 15px;
+    width: 100%;
+    padding: 12px;
+    background: #26658c;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.btn-matricular:hover {
+    background: #093475;
+}

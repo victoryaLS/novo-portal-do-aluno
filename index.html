@@ -40,33 +40,129 @@
     <!-- cursos -->
     <section id="cursos">
 
-        <div class="card-cursos">
-            <span class="cursos-tag">ANÁLISE E DESENVOLVIMENTO</span>
+        <div class="card-cursos" >
+            <span class="cursos-tag">ANÁLISE E DESENVOLVIMENTO DE SISTEMAS</span>
             <h2>Estruturas de Dados</h2>
             <p>Aprenda como organizar dados de forma eficiente.</p>
             <button onclick="adicionarCarrinho('Estruturas de Dados', this)">Adicionar</button>
         </div>
 
         <div class="card-cursos">
-            <span class="cursos-tag">ANÁLISE E DESENVOLVIMENTO</span>
+            <span class="cursos-tag">ANÁLISE E DESENVOLVIMENTO DE SISTEMAS</span>
             <h2>Modelagem de Sistemas</h2>
             <p>Planejamento e organização antes da programação.</p>
             <button onclick="adicionarCarrinho('Modelagem de Sistemas', this)">Adicionar</button>
         </div>
 
         <div class="card-cursos">
-            <span class="cursos-tag">ANÁLISE E DESENVOLVIMENTO</span>
+            <span class="cursos-tag">ANÁLISE E DESENVOLVIMENTO DE SISTEMAS/span>
             <h2>Paradigmas de Programação</h2>
             <p>Diferentes formas de desenvolver software.</p>
             <button onclick="adicionarCarrinho('Paradigmas de Programação', this)">Adicionar</button>
         </div>
 
         <div class="card-cursos">
-            <span class="cursos-tag">ANÁLISE E DESENVOLVIMENTO</span>
+            <span class="cursos-tag">ANÁLISE E DESENVOLVIMENTO DE SISTEMAS</span>
             <h2>Banco de Dados</h2>
             <p>Armazenamento e manipulação de dados.</p>
             <button onclick="adicionarCarrinho('Banco de Dados', this)">Adicionar</button>
         </div>
+
+            <!-- Modal: Estruturas de Dados -->
+    <div id="overlay-estruturas" class="modal-overlay" onclick="fecharModal('estruturas')">
+        <div class="modal-box" onclick="event.stopPropagation()">
+            <button class="modal-fechar" onclick="fecharModal('estruturas')">X</button>
+            <span class="curso-tag">ANÁLISE E DESENVOLVIMENTO DE SISTEMAS</span>
+            <h2>Estruturas de Dados</h2>
+            <p>Aprenda como organizar e manipular dados de forma eficiente em memória usando listas, filas, pilhas, árvores e grafos.</p>
+            <hr>
+            <p><strong>Duração:</strong> 80 horas</p>
+            <p><strong>Nível:</strong> Intermediário</p>
+            <p><strong>Professor:</strong> Prof. Carlos Eduardo</p>
+            <hr>
+            <p><strong>Conteúdo:</strong></p>
+            <ul>
+                <li>Arrays e listas encadeadas</li>
+                <li>Pilhas e filas</li>
+                <li>Árvores binárias</li>
+                <li>Tabelas hash</li>
+                <li>Grafos e algoritmos de busca</li>
+            </ul>
+            <button class="btn-matricular" onclick="alert('Matrícula realizada!')">Matricular-se</button>
+        </div>
+    </div>
+
+    <!-- Modal: Modelagem de Sistemas -->
+    <div id="overlay-modelagem" class="modal-overlay" onclick="fecharModal('modelagem')">
+        <div class="modal-box" onclick="event.stopPropagation()">
+            <button class="modal-fechar" onclick="fecharModal('modelagem')">X</button>
+            <span class="curso-tag">ANÁLISE E DESENVOLVIMENTO DE SISTEMAS</span>
+            <h2>Modelagem de Sistemas</h2>
+            <p>Entenda como planejar e documentar sistemas de software antes de programar, usando UML e diagramas.</p>
+            <hr>
+            <p><strong>Duração:</strong> 60 horas</p>
+            <p><strong>Nível:</strong> Iniciante</p>
+            <p><strong>Professor:</strong> Profa. Fernanda Lima</p>
+            <hr>
+            <p><strong>Conteúdo:</strong></p>
+            <ul>
+                <li>Introdução à UML</li>
+                <li>Diagrama de Casos de Uso</li>
+                <li>Diagrama de Classes</li>
+                <li>Diagrama de Sequência</li>
+                <li>Modelagem de banco de dados (MER)</li>
+            </ul>
+            <button class="btn-matricular" onclick="alert('Matrícula realizada!')">Matricular-se</button>
+        </div>
+    </div>
+
+    <!-- Modal: Paradigmas de Programação -->
+    <div id="overlay-paradigmas" class="modal-overlay" onclick="fecharModal('paradigmas')">
+        <div class="modal-box" onclick="event.stopPropagation()">
+            <button class="modal-fechar" onclick="fecharModal('paradigmas')">X</button>
+            <span class="curso-tag">ANÁLISE E DESENVOLVIMENTO DE SISTEMAS</span>
+            <h2>Paradigmas de Programação</h2>
+            <p>Explore diferentes formas de pensar e desenvolver software, do imperativo ao funcional e orientado a objetos.</p>
+            <hr>
+            <p><strong>Duração:</strong> 70 horas</p>
+            <p><strong>Nível:</strong> Intermediário</p>
+            <p><strong>Professor:</strong> Prof. Ricardo Souza</p>
+            <hr>
+            <p><strong>Conteúdo:</strong></p>
+            <ul>
+                <li>Paradigma Imperativo</li>
+                <li>Orientação a Objetos</li>
+                <li>Programação Funcional</li>
+                <li>Programação Reativa</li>
+                <li>Comparativo entre linguagens</li>
+            </ul>
+            <button class="btn-matricular" onclick="alert('Matrícula realizada!')">Matricular-se</button>
+        </div>
+    </div>
+
+    <!-- Modal: Banco de Dados -->
+    <div id="overlay-banco" class="modal-overlay" onclick="fecharModal('banco')">
+        <div class="modal-box" onclick="event.stopPropagation()">
+            <button class="modal-fechar" onclick="fecharModal('banco')">X</button>
+            <span class="curso-tag">ANÁLISE E DESENVOLVIMENTO DE SISTEMAS</span>
+            <h2>Banco de Dados</h2>
+            <p>Domine tecnologias e linguagens de armazenamento de dados, do SQL básico ao NoSQL avançado.</p>
+            <hr>
+            <p><strong>Duração:</strong> 90 horas</p>
+            <p><strong>Nível:</strong> Iniciante ao Avançado</p>
+            <p><strong>Professor:</strong> Prof. André Martins</p>
+            <hr>
+            <p><strong>Conteúdo:</strong></p>
+            <ul>
+                <li>Modelo Relacional e MER</li>
+                <li>SQL: DDL, DML e DQL</li>
+                <li>Normalização de dados</li>
+                <li>Stored Procedures e Triggers</li>
+                <li>Introdução ao NoSQL</li>
+            </ul>
+            <button class="btn-matricular" onclick="alert('Matrícula realizada!')">Matricular-se</button>
+        </div>
+    </div>
 
     </section>
 
